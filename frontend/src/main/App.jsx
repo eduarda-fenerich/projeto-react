@@ -46,16 +46,26 @@ function App(){
               />
 
               <Route 
-              
+              path="/users"
+              element={
+                <PrivateRoute>
+                  <UserCrud/>
+                </PrivateRoute>
+              }
               />
-
+              {/* Redirecionamento padrão */}
+              <Route path="*" element={<Navigate to="/login" replace/>}/>
             </Routes>
           </main>
+          <PrivateRoute>
+            <Footer/>
+          </PrivateRoute>
         </div>
       </Router>
     </AuthProvider>
-  )
+  );
 }
 
+export default App;
 
 
